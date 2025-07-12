@@ -18,7 +18,9 @@ const layout = ({ children }) => {
           {" "}
           <h1 className="text-2xl font-bold">Expense Tracker</h1>
         </div>
+       <div className="flex flex-col h-[89vh] w-full p-4 overflow-auto bg-gray-100"> 
         {children}
+      </div>
       </div>
     </div>
   );
