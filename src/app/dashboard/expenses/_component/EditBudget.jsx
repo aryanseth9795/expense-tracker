@@ -17,12 +17,10 @@ import { toast } from "sonner";
 import { createBudget } from "@/app/actions/expenseActions";
 
 
-const New_budget = ({ refetchData, userId }) => {
+const Edit_budget = ({ refetchData, userId }) => {
   const [newdata, setNewData] = React.useState({
     name: "",
     amount: 0,
-    used: 0,
-    userId,
   });
 
   const handleInputChange = (e) => {
@@ -35,11 +33,11 @@ const New_budget = ({ refetchData, userId }) => {
    
   };
 
-  const handleCreateBudget = async () => {
+  const handleUpdateBudget = async () => {
     const res = await createBudget(newdata);
-    console.log("New Budget Created:", res);
-     refetchData();
-    toast.success("Budget created successfully!");
+    console.log("Budget Updated:", res);
+    refetchData();
+    toast.success("Budget updated successfully!");
   };
 
   return (
@@ -48,14 +46,14 @@ const New_budget = ({ refetchData, userId }) => {
         <DialogTrigger>
           {" "}
           <div className="border shadow-md p-4 h-[15vh] flex flex-col items-center justify-center cursor-pointer rounded-3xl hover:bg-gray-100 transition-all duration-300">
-            <h2 className="font-bold">Create New Budget </h2>
+            <h2 className="font-bold">Edit Budget </h2>
             <CirclePlus />
           </div>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader className="text-center">
             <DialogTitle className={"text-2xl font-bold text-center"}>
-              Add New Budget ?
+              Edit Budget
             </DialogTitle>
           </DialogHeader>
           <DialogDescription className="text-center">
@@ -66,20 +64,22 @@ const New_budget = ({ refetchData, userId }) => {
             className="mb-2"
             onChange={handleInputChange}
             name="name"
+            value={newdata.name}
           />
           <Input
             placeholder="Budget Amount"
             className="mb-2"
             onChange={handleInputChange}
             name="amount"
+            value={newdata.amount}
           />
           <DialogFooter className="sm:justify-start">
             <DialogClose asChild>
               <Button
                 className="w-full bg-blue-500 text-white hover:bg-blue-600"
-                onClick={handleCreateBudget}
+                onClick={handleUpdateBudget}
               >
-                Create Budget
+                Update Budget
               </Button>
             </DialogClose>
           </DialogFooter>
@@ -89,4 +89,4 @@ const New_budget = ({ refetchData, userId }) => {
   );
 };
 
-export default New_budget;
+export default Edit_budget;

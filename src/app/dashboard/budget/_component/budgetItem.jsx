@@ -17,7 +17,7 @@ const BudgetItem = ({id, name, amount, used }) => {
       <div className="mt-3  h-[2vh] w-full bg-blue-800 rounded-full">
         <div
           className="h-[2vh] bg-green-500 rounded-full "
-          style={{ width: `${(used / amount) * 100}%` }}
+          style={{ width: used < amount ? `${(used / amount) * 100}%` : `100%` }}
         ></div>
       </div>
     </div></Link>

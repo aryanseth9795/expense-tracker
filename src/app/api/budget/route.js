@@ -18,7 +18,7 @@ export const POST = async (req) => {
     const newBudget = await Budget.create(body);
     console.log("yha tk cALLING", body);
     return new Response(
-      JSON.stringify({ newBudget, message: "Budget created successfully" }),
+      JSON.stringify({ newBudget, message: "Budget Created Successfully" }),
       { status: 201 }
     );
   } catch (error) {

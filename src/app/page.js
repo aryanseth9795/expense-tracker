@@ -15,7 +15,6 @@ const Home = () => {
 
       <div className="flex items-center justify-center h-screen">
         <Image src="/dash.jpg" alt="dashboard" width={1000} height={500} />
-        
       </div>
     </div>
   );

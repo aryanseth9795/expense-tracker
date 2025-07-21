@@ -1,7 +1,7 @@
 
 import  mongoose from "mongoose";
 
-const expenseSchema = mongoose.Schema({
+const expenseSchema = new mongoose.Schema({
         name: {
             type: String,
             required: true,
@@ -10,11 +10,11 @@ const expenseSchema = mongoose.Schema({
             type: Number,
             required: true,
         },
-        userId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
-            required: true,
-        },
+        // userId: {
+        //     type: mongoose.Schema.Types.ObjectId,
+        //     ref: "User",
+        //     required: true,
+        // },
         budgetId: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Budget",
