@@ -16,11 +16,10 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import { createBudget } from "@/app/actions/expenseActions";
 
-
-const Edit_budget = ({ refetchData, userId }) => {
+const Edit_budget = ({ refetchData, data }) => {
   const [newdata, setNewData] = React.useState({
-    name: "",
-    amount: 0,
+    name: data?.name || "",
+    amount: data?.amount || 0,
   });
 
   const handleInputChange = (e) => {
@@ -28,9 +27,8 @@ const Edit_budget = ({ refetchData, userId }) => {
     setNewData((prevData) => ({
       ...prevData,
       [name]: value,
-      userId: userId,
+      userId: data?.userId,
     }));
-   
   };
 
   const handleUpdateBudget = async () => {
@@ -45,10 +43,9 @@ const Edit_budget = ({ refetchData, userId }) => {
       <Dialog>
         <DialogTrigger>
           {" "}
-          <div className="border shadow-md p-4 h-[15vh] flex flex-col items-center justify-center cursor-pointer rounded-3xl hover:bg-gray-100 transition-all duration-300">
-            <h2 className="font-bold">Edit Budget </h2>
-            <CirclePlus />
-          </div>
+          <h1 className="font-bold text-white border rounded-md px-23 py-2 md:px-7 md:py-2 w-[100%] hover:bg-gray-200 cursor-pointer bg-green-500  ">
+            Edit Budget{" "}
+          </h1>
         </DialogTrigger>
         <DialogContent>
           <DialogHeader className="text-center">
