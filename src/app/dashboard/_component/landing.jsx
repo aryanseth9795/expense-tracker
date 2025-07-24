@@ -1,9 +1,10 @@
+"use client";
 import React from "react";
 import { ManPic } from "./manpic";
 
-const Landing = () => {
+const Landing = ({ session }) => {
   return (
-    <div >
+    <div>
       <section className="bg-white lg:grid lg:h-[50h] lg:place-content-centerdark:bg-gray-900">
         <div className="mx-auto w-screen max-w-screen-xl px-4 py-1 sm:px-6 sm:py-8 md:grid md:grid-cols-2  md:gap-4  lg:px-8 lg:py-20">
           <div className="max-w-prose text-left">
@@ -21,7 +22,7 @@ const Landing = () => {
             <div className="mt-4 flex gap-4 sm:mt-6 justify-center">
               <a
                 className="inline-block rounded border border-indigo-600 bg-indigo-600 px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-indigo-700"
-                href="/login"
+                href={session ? "/dashboard" : "/login"}
               >
                 Get Started
               </a>

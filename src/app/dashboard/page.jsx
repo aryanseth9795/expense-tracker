@@ -5,25 +5,30 @@ import { getDashboardData } from "../actions/expenseActions";
 import BudgetItem from "./budget/_component/budgetItem";
 import BarChartDashboard from "./_component/BarChartDashboard";
 import { PiggyBank, ReceiptIcon, Shield } from "lucide-react";
-import Loader from '@/app/dashboard/_component/Loader'
+import Loader from "@/app/dashboard/_component/Loader";
+import { useSession } from "next-auth/react";
+
 const Dashboard = () => {
   const [dashboardData, setDashboardData] = React.useState();
   const [loading, setLoading] = React.useState(true);
+  const { data: session } = useSession();
+  console.log("Session Data:", session);
+
   const fetchDashboardData = async () => {
     try {
       setLoading(true);
-      const result = await getDashboardData("687e33612cab50b3e6ae1d4b");
+      const result = await getDashboardData(session?.user?.id);
       setDashboardData(result);
       console.log(result);
     } catch (error) {
       console.error("Error fetching dashboard data:", error);
-    }finally {
+    } finally {
       setLoading(false);
     }
   };
   React.useEffect(() => {
     fetchDashboardData();
-  }, []);
+  }, [session?.user?.id]);
 
   // This is the main dashboard page
   return (

@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono,Roboto_Slab } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
+import { SessionProvider } from "next-auth/react";
 
 const geistSans = Roboto_Slab({
   variable: "--font-roboto-slab",
@@ -24,8 +25,8 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
        
       >
-        {children}
-        <Toaster/>
+        <SessionProvider>{children}</SessionProvider>
+        <Toaster />
       </body>
     </html>
   );

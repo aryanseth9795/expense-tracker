@@ -66,8 +66,7 @@ const page = ({ params }) => {
     console.log("Expense added:", res);
     setExpenseName("");
     setExpenseAmount("");
-    fetchExpenses();
-    fetchBudget(); // Refresh the expenses list after adding a new expense
+    fetchExpensesandBudget(); // Refresh the expenses list after adding a new expense
   };
 
   const deletehandler = async () => {

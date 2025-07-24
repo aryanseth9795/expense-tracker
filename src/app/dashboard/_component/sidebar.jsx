@@ -19,8 +19,8 @@ const Sidebar = () => {
     { name: "Dashboard", icon: <LayoutDashboard />, path: "/dashboard" },
     { name: "Budget", icon: <PiggyBank />, path: "/dashboard/budget" },
     { name: "Expenses", icon: <ReceiptIcon />, path: "/dashboard/expenses" },
-    { name: "Upgrade", icon: <Shield />, path: "/dashboard/upgrade" },
     { name: "Settings", icon: <Settings />, path: "/dashboard/setting" },
+    { name: "Logout", icon: <Shield />, path: "/dashboard/logout" },
   ];
 
   return (
@@ -35,7 +35,7 @@ const Sidebar = () => {
               <Link
                 href={`${item.path}`}
                 className={`flex items-center gap-2 p-2 hover:bg-gray-200 rounded-md ${
-                  path === item.path  ? "bg-gray-200" : "bg-transparent"
+                  path === item.path ? "bg-gray-200" : "bg-transparent"
                 }`}
               >
                 <span className="text-lg">{item.icon}</span>

@@ -13,15 +13,16 @@ import moment from "moment";
 import { getAllExpensesByUser } from "@/app/actions/expenseActions";
 import { toast } from "sonner";
 import Loader from '@/app/dashboard/_component/Loader'
-
+import { useSession } from "next-auth/react";
 const ExpensesPage = () => {
+  const { data: session } = useSession();
   const [allExpenses, setallExpenses] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
 
   const fetchallExpenses = async () => {
     try {
       setLoading(true);
-      const res = await getAllExpensesByUser("687e33612cab50b3e6ae1d4b");
+      const res = await getAllExpensesByUser(session?.user?.id);
       setallExpenses(res);
     } catch (error) {
       toast.error("Failed to fetch data.");
@@ -30,6 +31,7 @@ const ExpensesPage = () => {
     }
   };
 
+  
   useEffect(() => {
     fetchallExpenses();
   }, []);

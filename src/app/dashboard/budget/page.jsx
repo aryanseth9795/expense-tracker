@@ -5,8 +5,12 @@ import New_budget from "./_component/new_budget";
 import { getBudgets } from "@/app/actions/expenseActions";
 import { toast } from "sonner";
 import Loader from "@/app/dashboard/_component/Loader";
+import { useSession } from "next-auth/react";
 const Budget = () => {
-  const user = "687e33612cab50b3e6ae1d4b";
+  const { data: session } = useSession();
+  console.log("Session Data:", session);
+  const user = session?.user?.id;
+  console.log("User ID:", user);
   const [newdata, setNewData] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
 
