@@ -9,10 +9,14 @@ import Loader from "@/app/dashboard/_component/Loader";
 import { useSession } from "next-auth/react";
 
 const Dashboard = () => {
-  const [dashboardData, setDashboardData] = React.useState();
+  const [dashboardData, setDashboardData] = React.useState({
+    totalBudget: 0,
+    totalUsed: 0,
+    BudgetCount: 0,
+    budgets: [],
+  });
   const [loading, setLoading] = React.useState(true);
   const { data: session } = useSession();
-  console.log("Session Data:", session);
 
   const fetchDashboardData = async () => {
     try {

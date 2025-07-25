@@ -8,9 +8,9 @@ import Loader from "@/app/dashboard/_component/Loader";
 import { useSession } from "next-auth/react";
 const Budget = () => {
   const { data: session } = useSession();
-  console.log("Session Data:", session);
+
   const user = session?.user?.id;
-  console.log("User ID:", user);
+
   const [newdata, setNewData] = React.useState([]);
   const [loading, setLoading] = React.useState(false);
 
