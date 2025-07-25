@@ -17,7 +17,7 @@ const Home = () => {
 
       <Landing session={session?.user?.email ? true : false} />
 
-      <div className="flex items-center justify-center h-screen">
+      <div className="flex items-center md:justify-center">
         <Image src="/dash.jpg" alt="dashboard" width={1000} height={500} />
       </div>
     </div>

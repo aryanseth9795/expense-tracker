@@ -1,7 +1,7 @@
 export const ManPic =<svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1024 768"
-            className="mx-auto hidden max-w-md text-gray-900 md:block dark:text-white"
+            className="  mt-5 p-8 md:mt-0 md:p-0 max-w-md text-gray-900 sm:block dark:text-white"
           >
             <g fill="none" fillRule="evenodd">
               <g fill="#FF5678">
