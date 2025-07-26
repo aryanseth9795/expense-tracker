@@ -1,7 +1,7 @@
 "use server";
 
 import dbConnect from "@/lib/db";
-import budget from "@/models/budget";
+
 import Budget from "@/models/budget";
 import Expenses from "@/models/expenses";
 
@@ -121,6 +121,7 @@ export const deleteExpense = async (expenseId) => {
 export const getAllExpensesByUser = async (userId) => {
   try {
     // Step 1: Get all budget IDs for the user
+    await dbConnect();
     const budgets = await Budget.find({ userId }).select("_id");
     const budgetIds = budgets.map((b) => b._id);
 
@@ -135,13 +136,20 @@ export const getAllExpensesByUser = async (userId) => {
   }
 };
 
-
 export const getDashboardData = async (userId) => {
   try {
+    await dbConnect();
     const budgets = await Budget.find({ userId });
     const totalBudget = budgets.reduce((acc, budget) => acc + budget.amount, 0);
     const totalUsed = budgets.reduce((acc, budget) => acc + budget.used, 0);
-    return JSON.parse(JSON.stringify({ totalBudget, totalUsed ,BudgetCount: budgets.length,budgets: budgets.slice(0, 3) }));
+    return JSON.parse(
+      JSON.stringify({
+        totalBudget,
+        totalUsed,
+        BudgetCount: budgets.length,
+        budgets: budgets.slice(0, 3),
+      })
+    );
   } catch (error) {
     console.error("Error fetching dashboard data:", error);
     throw error;
